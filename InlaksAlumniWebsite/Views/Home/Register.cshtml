@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_InlaksAlumniLayout.cshtml";
+}
+
+
+
+
+<div class="banner inner-banner">
+    <div class="header-nav">
+        <!-- header-three -->
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu
+                </button>
+            </div>
+            <!-- top-nav -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="index">Home</a></li>
+                    <li><a href="about">About</a></li>
+                    <li><a href="event">Event</a></li>
+                    <li><a href="gallery">Gallery</a></li>
+                    <!--<li><a href="icons.html" data-toggle="dropdown">Donations<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="payment.html">Payment Options</a></li>
+                            <li><a href="upload.html">Upload Payment Evidence</a></li>
+                        </ul>
+                    </li>-->
+                    <li><a href="contact">Contact Us</a></li>
+                    <!--<li><a href="#" data-toggle="dropdown">Manage Account<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="profile.html">Alumni Profile</a></li>
+                            <li><a href="update.html">Update Account</a></li>
+                        </ul>
+                    </li>-->
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="w3ls-section">
+    <div class="container">
+        <h2 class="h3-w3l">Alumni Registration</h2>
+        <div class="grid_3 grid_4 w3layouts">
+            <form action="/AdminAccount/Registration" method="post">
+                <input name="__RequestVerificationToken" type="hidden" value="riUE9eqx4xreAZMGreQt-rjbtfbQ3OfDC-5iaembcHR-Tnq-57YVH-LoX2feT2tReAPriMVNlfc9SRxnK_mIF6ABQ4uVAAB0v1vSUO27c3M1" />    <div class="form-horizontal">
+
+                    <hr />
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="FirstName">FirstName</label>
+                        <div class="col-md-4">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="First Name is required!" id="FirstName" name="FirstName" type="text" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="LastName">LastName</label>
+                        <div class="col-md-4">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Last Name is required!" id="LastName" name="LastName" type="text" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="LastName" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Email">Email</label>
+                        <div class="col-md-4">
+                            <input class="form-control text-box single-line" data-val="true" data-val-email="Invalid Email" data-val-required="Email is required!" id="Email" name="Email" type="email" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="PhoneNumber">Phone Number</label>
+                        <div class="col-md-4">
+                            <input class="form-control text-box single-line" data-val="true" data-val-phone="The Phone Number field is not a valid phone number." data-val-regex="Entered phone format is not valid." data-val-regex-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" data-val-required="Phone Number Required!" id="PhoneNumber" name="PhoneNumber" type="tel" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="PhoneNumber">Date of Employment</label>
+                        <div class="col-md-4">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="" data-val-regex="Entered phone format is not valid." data-val-regex-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" data-val-required="Phone Number Required!" id="PhoneNumber" name="PhoneNumber" type="tel" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="PhoneNumber">Position Held</label>
+                        <div class="col-md-4">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Last Name is required!" data-val-regex="Entered phone format is not valid." data-val-regex-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" data-val-required="Phone Number Required!" id="PhoneNumber" name="PhoneNumber" type="tel" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="PhoneNumber">Date of Departue</label>
+                        <div class="col-md-4">
+                            <input class="form-control text-box single-line" data-val="true" data-val-phone="" data-val-regex="Entered phone format is not valid." data-val-regex-pattern="^\(?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" data-val-required="Phone Number Required!" id="PhoneNumber" name="PhoneNumber" type="tel" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Username">Username</label>
+                        <div class="col-md-4">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Username is required!" id="Username" name="Username" type="text" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Username" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Password">Password</label>
+                        <div class="col-md-4">
+                            <input class="form-control text-box single-line password" data-val="true" data-val-required="Password is required!" id="Password" name="Password" type="password" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="ConfirmPassword">ConfirmPassword</label>
+                        <div class="col-md-4">
+                            <input class="form-control text-box single-line password" data-val="true" data-val-equalto="Please confirm your password" data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Gender">Gender</label>
+                        <div class="col-md-4">
+                            <select class="form-control" data-val="true" data-val-required="The Gender field is required." id="Gender" name="Gender">
+                                <option selected="selected" value="0">male</option>
+                                <option value="1">female</option>
+                            </select>
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Gender" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Register" class="btn btn-success" style="margin-bottom: 10px;" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
