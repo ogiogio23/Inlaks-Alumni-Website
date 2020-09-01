@@ -1,4 +1,5 @@
-﻿
+﻿@model InlaksAlumniWebsite.Models.Donation
+
 @{
     ViewBag.Title = "CreateDonation";
     Layout = "~/Views/Shared/_InlaksAdminLayout.cshtml";
@@ -21,7 +22,7 @@
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="treeview">
-                        <a href="dashboard">
+                        <a href="#">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         </a>
                     </li>
@@ -65,7 +66,7 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="createdonation"><i class="fa fa-angle-right"></i> Create Donations</a></li>
-                            <li><a href="updatedonation"><i class="fa fa-angle-right"></i> Update Donations</a></li>
+                            <!--<li><a href="updatedonation"><i class="fa fa-angle-right"></i> Update Donations</a></li>-->
                             <li><a href="viewcollections"><i class="fa fa-angle-right"></i> View Collections</a></li>
                         </ul>
                     </li>
@@ -125,8 +126,8 @@
                         <div class="profile_img">
                             <!--<span class="prfil-img"><img src="images/2.jpg" alt=""> </span>-->
                             <div class="user-name">
-                                <p>Admin Name</p>
-                                <span>Administrator</span>
+                                <p>Administrator</p>
+                                <span></span>
                             </div>
                             <i class="fa fa-angle-down lnr"></i>
                             <i class="fa fa-angle-up lnr"></i>
@@ -134,7 +135,7 @@
                         </div>
                     </a>
                     <ul class="dropdown-menu drp-mnu">
-                        <li> <a href="#"><i class="fa fa-user"></i> Manage Account</a> </li>
+                        <li> <a href="manageaccount"><i class="fa fa-user"></i> Manage Account</a> </li>
                         <li> <a href="login"><i class="fa fa-sign-out"></i> Logout</a> </li>
                     </ul>
                 </li>
@@ -144,18 +145,66 @@
     </div>
     <div class="clearfix"> </div>
 </div>
-<!-- //header-ends -->
-<!-- main content start-->
-<div id="page-wrapper">
-    <div class="main-page signup-page">
-        <h2 class="title1">Create Donations</h2>
-        <div class="sign-up-row widget-shadow">
-            <form action="#" method="post">
-                <input type="text" name="">
 
-            </form>
+<div id="page-wrapper">
+    <h2 class="title1">Create Donation</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.DonationTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.DonationTitle, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DonationTitle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DonationType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.DonationType, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DonationType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*
+    <div class="form-group">
+        @Html.LabelFor(model => model.AlumniId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.AlumniId, new { htmlAttributes = new { @class = "form-control" } })
+
+            @Html.ValidationMessageFor(model => model.AlumniId, "", new { @class = "text-danger" })
         </div>
     </div>
-</div>
+            *@
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
 
 
+    </div>
