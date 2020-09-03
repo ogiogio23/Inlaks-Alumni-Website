@@ -1,7 +1,7 @@
-﻿@model IEnumerable<InlaksAlumniWebsite.Models.Donation>
+﻿@model InlaksAlumniWebsite.Models.Admin
 
 @{
-    ViewBag.Title = "ViewCollections";
+    ViewBag.Title = "DeleteAdmin";
     Layout = "~/Views/Shared/_InlaksAdminLayout.cshtml";
 }
 
@@ -18,6 +18,8 @@
                 </button>
                 <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span> Admin<span class="dashboard_text">dashboard</span></a></h1>
             </div>
+
+
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
@@ -114,82 +116,114 @@
         <!--notification menu end -->
         <div class="clearfix"> </div>
     </div>
-    <div class="header-right">
 
 
+        <div class="header-right">
+
+            <div class="profile_details">
+                <ul>
+                    <li class="dropdown profile_details_drop">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 
 
-        <div class="profile_details">
-            <ul>
-                <li class="dropdown profile_details_drop">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <div class="profile_img">
-                            <!--<span class="prfil-img"><img src="images/2.jpg" alt=""> </span>-->
-                            <div class="user-name">
-                                <p>Administrator</p>
-                                <span></span>
+                            <div class="profile_img">
+                                <span class="prfil-img"><img src="images/2.jpg" alt=""> </span>
+                                <div class="user-name">
+                                    <p>Administrator</p>
+                                    <span></span>
+                                </div>
+                                <i class="fa fa-angle-down lnr"></i>
+                                <i class="fa fa-angle-up lnr"></i>
+                                <div class="clearfix"></div>
                             </div>
-                            <i class="fa fa-angle-down lnr"></i>
-                            <i class="fa fa-angle-up lnr"></i>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu drp-mnu">
-                        <li> <a href="manageaccount"><i class="fa fa-user"></i> Manage Account</a> </li>
-                        <li> <a href="login"><i class="fa fa-sign-out"></i> Logout</a> </li>
-                    </ul>
-                </li>
-            </ul>
+                        </a>
+                        <ul class="dropdown-menu drp-mnu">
+                            <li> <a href="manageaccount"><i class="fa fa-user"></i> Manage Account</a> </li>
+                            <li> <a href="login"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
         </div>
-        <div class="clearfix"> </div>
-    </div>
+
     <div class="clearfix"> </div>
 </div>
+
 <div id="page-wrapper">
+    <h3>Are you sure you want to delete this record?</h3>
+    <div>
 
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
 
-    <table class="table">
-        <tr>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
 
-            <th>
-                @Html.DisplayNameFor(model => model.DonationTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DonationType)
-            </th>
-            <th>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
                 @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th></th>
-        </tr>
+            </dt>
 
-        @foreach (var item in Model)
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Username)
+            </dd>
+
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateRegistered)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateRegistered)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
         {
-            <tr>
+            @Html.AntiForgeryToken()
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.DonationTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Amount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DonationType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.DonationId }) |
-                    |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.DonationId })
-                </td>
-            </tr>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                @Html.ActionLink("Back to List", "UpdateAdmin")
+            </div>
         }
-
-    </table>
+    </div>
     </div>

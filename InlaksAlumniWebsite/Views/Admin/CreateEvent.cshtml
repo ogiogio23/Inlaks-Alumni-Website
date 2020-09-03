@@ -21,7 +21,7 @@
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="treeview">
-                        <a href="dashboard">
+                        <a href="#">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         </a>
                     </li>
@@ -65,7 +65,7 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="createdonation"><i class="fa fa-angle-right"></i> Create Donations</a></li>
-                            <li><a href="updatedonation"><i class="fa fa-angle-right"></i> Update Donations</a></li>
+                            <!--<li><a href="updatedonation"><i class="fa fa-angle-right"></i> Update Donations</a></li>-->
                             <li><a href="viewcollections"><i class="fa fa-angle-right"></i> View Collections</a></li>
                         </ul>
                     </li>
@@ -113,48 +113,108 @@
         <!--notification menu end -->
         <div class="clearfix"> </div>
     </div>
-    <div class="header-right">
 
 
 
+        <div class="header-right">
 
-        <div class="profile_details">
-            <ul>
-                <li class="dropdown profile_details_drop">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <div class="profile_img">
-                            <!--<span class="prfil-img"><img src="images/2.jpg" alt=""> </span>-->
-                            <div class="user-name">
-                                <p>Admin Name</p>
-                                <span>Administrator</span>
-                            </div>
-                            <i class="fa fa-angle-down lnr"></i>
-                            <i class="fa fa-angle-up lnr"></i>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu drp-mnu">
-                        <li> <a href="#"><i class="fa fa-user"></i> Manage Account</a> </li>
-                        <li> <a href="login"><i class="fa fa-sign-out"></i> Logout</a> </li>
-                    </ul>
-                </li>
-            </ul>
+            <div class="profile_details">
+
+
+
+                <div class="header-right">
+
+                    <div class="profile_details">
+                        <ul>
+                            <li class="dropdown profile_details_drop">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+
+
+                                    <div class="profile_img">
+                                        <span class="prfil-img"><img src="images/2.jpg" alt=""> </span>
+                                        <div class="user-name">
+                                            <p>Administrator</p>
+                                            <span></span>
+                                        </div>
+                                        <i class="fa fa-angle-down lnr"></i>
+                                        <i class="fa fa-angle-up lnr"></i>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu drp-mnu">
+                                    <li> <a href="manageaccount"><i class="fa fa-user"></i> Manage Account</a> </li>
+                                    <li> <a href="login"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+
+            </div>
+            <div class="clearfix"> </div>
         </div>
-        <div class="clearfix"> </div>
-    </div>
+
     <div class="clearfix"> </div>
 </div>
 <!-- //header-ends -->
 <div id="page-wrapper">
-    <div class="main-page signup-page">
-        <h2 class="title1">Create Event</h2>
-        <div class="sign-up-row widget-shadow">
-            <form action="#" method="post">
-                <input type="text" name="">
+    <h2 class="title1">Create Event</h2>
+    <form action="" method="post">
+        <input name="__RequestVerificationToken" type="hidden" value="riUE9eqx4xreAZMGreQt-rjbtfbQ3OfDC-5iaembcHR-Tnq-57YVH-LoX2feT2tReAPriMVNlfc9SRxnK_mIF6ABQ4uVAAB0v1vSUO27c3M1" />    <div class="form-horizontal">
 
-            </form>
+            <hr />
+
+            <input name="ResponseCode" type="hidden" value="" id="hiddenField" />
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="FirstName">Event Title</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="First Name is required!" id="FirstName" name="EventTitle" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="LastName">Event Location</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="Last Name is required!" id="LastName" name="EventLocation" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="LastName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Email">Event Date</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-email="" data-val-required="This field is required!" id="Email" name="EventDate" type="date" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="event">Event Time</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line password" data-val="true" data-val-equalto="Amount is required!" data-val-equalto-other="" id="ConfirmPassword" name="EventTime" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Description">Description</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="This field is required!" id="LastName" name="Description" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Description" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Register" class="btn btn-success" style="margin-bottom: 10px;" />
+                </div>
+            </div>
+
+
         </div>
-    </div>
+    </form>
 </div>
 
 

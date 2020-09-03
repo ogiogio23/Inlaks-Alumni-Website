@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<InlaksAlumniWebsite.Models.Admin>
+
 @{
     ViewBag.Title = "UpdateAdmin";
     Layout = "~/Views/Shared/_InlaksAdminLayout.cshtml";
@@ -21,7 +22,7 @@
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="treeview">
-                        <a href="dashboard">
+                        <a href="#">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         </a>
                     </li>
@@ -65,7 +66,7 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="createdonation"><i class="fa fa-angle-right"></i> Create Donations</a></li>
-                            <li><a href="updatedonation"><i class="fa fa-angle-right"></i> Update Donations</a></li>
+                            <!--<li><a href="updatedonation"><i class="fa fa-angle-right"></i> Update Donations</a></li>-->
                             <li><a href="viewcollections"><i class="fa fa-angle-right"></i> View Collections</a></li>
                         </ul>
                     </li>
@@ -125,8 +126,8 @@
                         <div class="profile_img">
                             <!--<span class="prfil-img"><img src="images/2.jpg" alt=""> </span>-->
                             <div class="user-name">
-                                <p>Admin Name</p>
-                                <span>Administrator</span>
+                                <p>Administrator</p>
+                                <span></span>
                             </div>
                             <i class="fa fa-angle-down lnr"></i>
                             <i class="fa fa-angle-up lnr"></i>
@@ -134,7 +135,7 @@
                         </div>
                     </a>
                     <ul class="dropdown-menu drp-mnu">
-                        <li> <a href="#"><i class="fa fa-user"></i> Manage Account</a> </li>
+                        <li> <a href="manageaccount"><i class="fa fa-user"></i> Manage Account</a> </li>
                         <li> <a href="login"><i class="fa fa-sign-out"></i> Logout</a> </li>
                     </ul>
                 </li>
@@ -147,66 +148,61 @@
 <!-- //header-ends -->
 <!-- main content start-->
 <div id="page-wrapper">
-    <div class="main-page signup-page">
-        <h2 class="title1">Update Admin</h2>
-        <div class="sign-up-row widget-shadow">
-            <h5>Personal Information :</h5>
-            <form action="#" method="post">
-                <div class="sign-u">
-                    <input type="text" name="firstname" placeholder="First Name" required="">
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="sign-u">
-                    <input type="text" placeholder="Last Name" required="">
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="sign-u">
-                    <input type="email" placeholder="Email Address" required="">
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="sign-u">
-                    <div class="sign-up1">
-                        <h4>Gender* :</h4>
-                    </div>
-                    <div class="sign-up2">
-                        <label>
-                            <input type="radio" name="Gender" required="">
-                            Male
-                        </label>
-                        <label>
-                            <input type="radio" name="Gender" required="">
-                            Female
-                        </label>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-                <h6>Login Information :</h6>
-                <div class="sign-u">
-                    <input type="text" placeholder="Username " required="">
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="sign-u">
-                    <input type="password" placeholder="Password" required="">
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="sign-u">
-                    <input type="password" placeholder="Confirm Password" required="">
-                </div>
-                <div class="clearfix"> </div>
-                <div class="sub_home">
-                    <input type="submit" value="Submit">
-                    <div class="clearfix"> </div>
-                </div>
-                <!--<div class="registration">
-                    Already Registered.
-                    <a class="" href="login.html">
-                        Login
-                    </a>
-                </div>-->
-            </form>
+    <div class="main-page">
+        <div class="tables">
+            <div class="bs-example widget-shadow" data-example-id="hoverable-table">
+                <h4>Update Admin</h4>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone Number
+                            <th>Gender</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FirstName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LastName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Gender)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateRegistered)
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink("View", "EditAdmin/"+item.AdminId, "Admin")
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Delete", "DeleteAdmin/"+item.AdminId, "Admin")
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>>
-
+</div>
 
 

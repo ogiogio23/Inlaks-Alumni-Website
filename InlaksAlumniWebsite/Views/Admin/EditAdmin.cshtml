@@ -1,7 +1,7 @@
-﻿@model IEnumerable<InlaksAlumniWebsite.Models.Donation>
+﻿@model InlaksAlumniWebsite.Models.Admin
 
 @{
-    ViewBag.Title = "ViewCollections";
+    ViewBag.Title = "EditAdmin";
     Layout = "~/Views/Shared/_InlaksAdminLayout.cshtml";
 }
 
@@ -135,7 +135,7 @@
                         </div>
                     </a>
                     <ul class="dropdown-menu drp-mnu">
-                        <li> <a href="manageaccount"><i class="fa fa-user"></i> Manage Account</a> </li>
+                        <li> <a href="#"><i class="fa fa-user"></i> Manage Account</a> </li>
                         <li> <a href="login"><i class="fa fa-sign-out"></i> Logout</a> </li>
                     </ul>
                 </li>
@@ -145,51 +145,91 @@
     </div>
     <div class="clearfix"> </div>
 </div>
+
+
 <div id="page-wrapper">
+    <h2 class="title1">Update Alumni</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.AdminId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
 
-    <table class="table">
-        <tr>
 
-            <th>
-                @Html.DisplayNameFor(model => model.DonationTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DonationType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th></th>
-        </tr>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Gender">Gender</label>
+                <div class="col-md-4">
+                    <select class="form-control text-box single-line" data-val="true" data-val-required="This field is required!" id="Gender" name="Gender" type="text" value="">
+                        <option selected="selected" value="male">male</option>
+                        <option value="female">female</option>
+                    </select>
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Gender" data-valmsg-replace="true"></span>
+                </div>
+            </div>
 
-        @foreach (var item in Model)
-        {
-            <tr>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DateRegistered, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.DateRegistered, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DateRegistered, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.DonationTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Amount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DonationType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
 
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.DonationId }) |
-                    |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.DonationId })
-                </td>
-            </tr>
-        }
-
-    </table>
+    <div>
+        @Html.ActionLink("Back to List", "UpdateAdmin")
+    </div>
     </div>
