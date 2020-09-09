@@ -46,9 +46,9 @@
 
 <div class="w3ls-section">
     <div class="container">
-        <h2 class="h3-w3l">Alumni Registration</h2>
-        <div class="grid_3 grid_4 w3layouts">
-            <form action="/AdminAccount/Registration" method="post">
+        <h2 class="h3-w3l" style="color:#49c7ed">Alumni Registration</h2>
+        <div class="grid_3 grid_4 w3layouts" style="box-shadow: 5px 5px 5px 5px lightgrey;" >
+            <form action="" method="post">
                 <input name="__RequestVerificationToken" type="hidden" value="riUE9eqx4xreAZMGreQt-rjbtfbQ3OfDC-5iaembcHR-Tnq-57YVH-LoX2feT2tReAPriMVNlfc9SRxnK_mIF6ABQ4uVAAB0v1vSUO27c3M1" />    <div class="form-horizontal">
 
                     <hr />
@@ -57,106 +57,131 @@
 
                     <div class="form-group">
                         <label class="control-label col-md-2" for="FirstName">FirstName</label>
-                        <div class="col-md-4">
-                            <input class="form-control text-box single-line" data-val="true" data-val-required="First Name is required!" id="FirstName" name="FirstName" type="text" value="" />
+                        <div class="col-md-3">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="First Name is required!" id="FirstName" name="FirstName" type="text" value="" placeholder="First Name" />
                             <span class="field-validation-valid text-danger" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
                         </div>
-                    </div>
 
-                    <div class="form-group">
                         <label class="control-label col-md-2" for="LastName">LastName</label>
-                        <div class="col-md-4">
-                            <input class="form-control text-box single-line" data-val="true" data-val-required="Last Name is required!" id="LastName" name="LastName" type="text" value="" />
+                        <div class="col-md-3">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Last Name is required!" id="LastName" name="LastName" type="text" value="" placeholder="Last Name" />
                             <span class="field-validation-valid text-danger" data-valmsg-for="LastName" data-valmsg-replace="true"></span>
                         </div>
                     </div>
 
+                    <!--<div class="form-group">
+
+                    </div>-->
+
                     <div class="form-group">
                         <label class="control-label col-md-2" for="Email">Email</label>
-                        <div class="col-md-4">
-                            <input class="form-control text-box single-line" data-val="true" data-val-email="Invalid Email" data-val-required="Email is required!" id="Email" name="Email" type="email" value="" />
+                        <div class="col-md-3">
+                            <input class="form-control text-box single-line" data-val="true" data-val-email="Invalid Email" data-val-required="Email is required!" id="Email" name="Email" type="email" value="" placeholder="Email" />
                             <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                         </div>
-                    </div>
 
-                 <div class="form-group">
                         <label class="control-label col-md-2" for="Email">Past Employee Id</label>
-                        <div class="col-md-4">
-                            <input class="form-control text-box single-line" data-val="true" data-val-email="Invalid Alumni Id" data-val-required="Alumni Id is required!" id="alumniId" name="AlumniId" type="text" value="" />
+                        <div class="col-md-3">
+                            <input class="form-control text-box single-line" data-val="true" data-val-email="Invalid Alumni Id" data-val-required="Alumni Id is required!" id="alumniId" name="PastEmployeeId" type="text" value="" placeholder="Past Employee Id" />
                             <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                             <div class="overlay"></div>
                             <div id="error"></div>
                         </div>
                     </div>
 
+                 <!--<div class="form-group">
+
+                    </div>-->
+
                     <div class="form-group">
                         <label class="control-label col-md-2" for="PhoneNumber">Phone Number</label>
-                        <div class="col-md-4">
-                            <input class="form-control text-box single-line" data-val="true" data-val-phone="The Phone Number field is not a valid phone number." data-val-regex="Entered phone format is not valid." data-val-regex-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" data-val-required="Phone Number Required!" id="PhoneNumber" name="PhoneNumber" type="tel" value="" />
+                        <div class="col-md-3">
+                            <input class="form-control text-box single-line" data-val="true" data-val-phone="The Phone Number field is not a valid phone number." data-val-regex="Entered phone format is not valid." data-val-regex-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" data-val-required="Phone Number Required!" id="PhoneNumber" name="PhoneNumber" type="tel" value="" placeholder="Phone Number" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
+                        </div>
+
+                        <label class="control-label col-md-2" for="PhoneNumber">Date of Employment</label>
+                        <div class="col-md-3">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="" data-val-regex="Entered phone format is not valid." data-val-regex-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"  id="PhoneNumber" name="DateOfEmployment" type="date" value="" placeholder="Date of Employment" />
                             <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-2" for="PhoneNumber">Date of Employment</label>
-                        <div class="col-md-4">
-                            <input class="form-control text-box single-line" data-val="true" data-val-required="" data-val-regex="Entered phone format is not valid." data-val-regex-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" data-val-required="Phone Number Required!" id="PhoneNumber" name="PhoneNumber" type="tel" value="" />
-                            <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
-                        </div>
-                    </div>
+                    <!--<div class="form-group">
+
+                    </div>-->
 
                     <div class="form-group">
                         <label class="control-label col-md-2" for="PhoneNumber">Position Held</label>
-                        <div class="col-md-4">
-                            <input class="form-control text-box single-line" data-val="true" data-val-required="Last Name is required!" data-val-regex="Entered phone format is not valid." data-val-regex-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" data-val-required="Phone Number Required!" id="PhoneNumber" name="PhoneNumber" type="tel" value="" />
+                        <div class="col-md-3">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Last Name is required!" data-val-regex="Entered phone format is not valid." data-val-regex-pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"  id="PhoneNumber" name="PositionHeld" type="text" value="" placeholder="Position Held"/>
+                            <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
+                        </div>
+
+                        <label class="control-label col-md-2" for="PhoneNumber">Date of Departue</label>
+                        <div class="col-md-3">
+                            <input class="form-control text-box single-line" data-val="true" data-val-phone="" data-val-regex="Entered phone format is not valid." data-val-regex-pattern="^\(?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" data-val-required="Phone Number Required!" id="PhoneNumber" name="DateLeft" type="date" value="" placeholder="Date Left" />
                             <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-2" for="PhoneNumber">Date of Departue</label>
-                        <div class="col-md-4">
-                            <input class="form-control text-box single-line" data-val="true" data-val-phone="" data-val-regex="Entered phone format is not valid." data-val-regex-pattern="^\(?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" data-val-required="Phone Number Required!" id="PhoneNumber" name="PhoneNumber" type="tel" value="" />
-                            <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
-                        </div>
-                    </div>
+                    <!--<div class="form-group">
+
+                    </div>-->
 
                     <div class="form-group">
                         <label class="control-label col-md-2" for="Username">Username</label>
-                        <div class="col-md-4">
-                            <input class="form-control text-box single-line" data-val="true" data-val-required="Username is required!" id="Username" name="Username" type="text" value="" />
+                        <div class="col-md-3">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Username is required!" id="Username" name="Username" type="text" value="" placeholder="Username"/>
                             <span class="field-validation-valid text-danger" data-valmsg-for="Username" data-valmsg-replace="true"></span>
                         </div>
-                    </div>
 
-                    <div class="form-group">
                         <label class="control-label col-md-2" for="Password">Password</label>
-                        <div class="col-md-4">
-                            <input class="form-control text-box single-line password" data-val="true" data-val-required="Password is required!" id="Password" name="Password" type="password" value="" />
+                        <div class="col-md-3">
+                            <input class="form-control text-box single-line password" data-val="true" data-val-required="Password is required!" id="Password" name="Password" type="password" value="" placeholder="Password" />
                             <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
                         </div>
                     </div>
 
+                    <!--<div class="form-group">
+
+                    </div>-->
+
                     <div class="form-group">
                         <label class="control-label col-md-2" for="ConfirmPassword">ConfirmPassword</label>
-                        <div class="col-md-4">
-                            <input class="form-control text-box single-line password" data-val="true" data-val-equalto="Please confirm your password" data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password" value="" />
+                        <div class="col-md-3">
+                            <input class="form-control text-box single-line password" data-val="true" data-val-equalto="Please confirm your password" data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password" value="" placeholder="Confirm Password" />
                             <span class="field-validation-valid text-danger" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
                         </div>
-                    </div>
 
-
-
-                    <div class="form-group">
                         <label class="control-label col-md-2" for="Gender">Gender</label>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <select class="form-control" data-val="true" data-val-required="The Gender field is required." id="Gender" name="Gender">
-                                <option selected="selected" value="0">male</option>
-                                <option value="1">female</option>
+                                <option selected="selected" value="Gender">Gender</option>
+                                <option value="male">male</option>
+                                <option value="female">female</option>
                             </select>
                             <span class="field-validation-valid text-danger" data-valmsg-for="Gender" data-valmsg-replace="true"></span>
                         </div>
                     </div>
+
+                <div class="form-group" style="display:none;">
+                <label class="control-label col-md-2" for="Status">Status</label>
+                <div class="col-md-3">
+                    <select class="form-control text-box single-line" id="Status" name="Status" type="text" value="">
+                        <option selected="selected" value="PENDING">PENDING</option>
+                        <option value="ACCEPTED">ACCEPTED</option>
+                        <option value="DECLINED">DECLINED</option>
+                    </select>
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Status" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+
+
+                    <!--<div class="form-group">
+
+                    </div>-->
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-2">

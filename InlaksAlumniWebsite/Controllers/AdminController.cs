@@ -1,6 +1,7 @@
 ﻿using InlaksAlumniWebsite.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -25,20 +26,19 @@ namespace InlaksAlumniWebsite.Controllers
         [HttpPost]
         public ActionResult Login(Admin user)
         {
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
-                var usr = db.Admins.Single(u => u.Email == user.Email && u.Password == user.Password);
+                var usr = db.Admins.SingleOrDefault (u => u.Email == user.Email && u.Password == user.Password);
 
                 if (usr != null)
                 {
-                    Session["UserId"] = usr.Email.ToString();
-                    Session["Username"] = usr.Username.ToString();
-
+                    Session["User"] = usr;
                     return RedirectToAction("Inbox");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Username or Password is Invalid");
+                    ViewBag.Message = "Invalid Email or Password";
+                    //ModelState.AddModelError("", "Username or Password is Invalid");
                 }
             }
             return View();
@@ -50,7 +50,10 @@ namespace InlaksAlumniWebsite.Controllers
         //GET
         public ActionResult CreateAdmin()
         {
-            ViewBag.Title = "CreateAdmin";
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
             return View();
         }
 
@@ -60,7 +63,7 @@ namespace InlaksAlumniWebsite.Controllers
         {
             if(ModelState != null)
             {
-                using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+                using (InlaksAlumniContext db = new InlaksAlumniContext())
                 {
                     var result = db.Admins.Where(a => a.Email == admin.Email).FirstOrDefault();
                     if (result != null)
@@ -88,6 +91,10 @@ namespace InlaksAlumniWebsite.Controllers
 
         public ActionResult CreateAlumni()
         {
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
             return View();
         }
 
@@ -97,7 +104,7 @@ namespace InlaksAlumniWebsite.Controllers
         {
             if (ModelState != null)
             {
-                using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+                using (InlaksAlumniContext db = new InlaksAlumniContext())
                 {
                     var result = db.Alumnis.Where(a => a.Email == alumni.Email).FirstOrDefault();
                     if (result != null)
@@ -125,7 +132,10 @@ namespace InlaksAlumniWebsite.Controllers
         //GET
         public ActionResult CreateDonation()
         {
-            ViewBag.Title = "CreateDonation";
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
             return View();
         }
 
@@ -134,7 +144,7 @@ namespace InlaksAlumniWebsite.Controllers
         {
             if (ModelState != null)
             {
-                using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+                using (InlaksAlumniContext db = new InlaksAlumniContext())
                 {
                     var result1 = db.Donations.Where(a => a.Email == donation.Email).FirstOrDefault();
                     if (result1 != null)
@@ -173,6 +183,10 @@ namespace InlaksAlumniWebsite.Controllers
         //GET
         public ActionResult CreateEvent()
         {
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
             return View();
         }
 
@@ -182,7 +196,7 @@ namespace InlaksAlumniWebsite.Controllers
         {
             if (ModelState != null)
             {
-                using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+                using (InlaksAlumniContext db = new InlaksAlumniContext())
                 {
                     db.Events.Add(e);
                     db.SaveChanges();
@@ -198,13 +212,28 @@ namespace InlaksAlumniWebsite.Controllers
 
         public ActionResult Inbox()
         {
-            if (Session["UserId"] != null)
-            {
-                return View();
-            }
-            else
+            if (!this.AuthenticateUser())
             {
                 return RedirectToAction("Login");
+            }
+
+            Admin admin = Session["User"] as Admin;
+            if (admin == null)
+            {
+                return HttpNotFound();
+            }
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
+            {
+                var feed = db.Feedbacks.ToList();
+                if (feed == null)
+                {
+                    return RedirectToAction("Inbox");
+                }
+                else
+                {
+                    feed.Reverse();
+                }
+                return View(feed);
             }
         }
 
@@ -219,7 +248,12 @@ namespace InlaksAlumniWebsite.Controllers
         //List of registered Administrators
         public ActionResult UpdateAdmin()
         {
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
+
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var user = db.Admins.ToList();
                 if (user == null)
@@ -235,7 +269,12 @@ namespace InlaksAlumniWebsite.Controllers
 
         public ActionResult UpdateAlumni()
         {
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
+
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var user = db.Alumnis.ToList();
                 if (user == null)
@@ -249,12 +288,16 @@ namespace InlaksAlumniWebsite.Controllers
 
         public ActionResult UpdateDonation()
         {
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
             return View();
         }
 
         public ActionResult ManageEvent()
         {
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var user = db.Events.ToList();
                 if (user == null)
@@ -269,60 +312,74 @@ namespace InlaksAlumniWebsite.Controllers
 
         public ActionResult UploadPhoto()
         {
-            ViewBag.Title = "UploadPhoto";
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
             return View();
         }
 
         [HttpPost]
-        public ActionResult UploadPhoto([Bind(Include = "Id, ImageUrl,EventId")] EventImage e, HttpPostedFileBase UploadImage)
+        public ActionResult UploadPhoto(EventImage e, HttpPostedFileBase UploadImage)
         {
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
-            {
 
-
-            if (ModelState != null)
+            if (ModelState.IsValid)
             {
-                    if (UploadImage.ContentType == "image/jpg" || UploadImage.ContentType == "image/jpeg" || UploadImage.ContentType == "image/png")
+                using (InlaksAlumniContext db = new InlaksAlumniContext())
+                {
+                    try
                     {
-                        UploadImage.SaveAs(Server.MapPath("/") + "/Content/images" + UploadImage.FileName);
-                        e.ImagesUrl = UploadImage.FileName;
+                        if (UploadImage != null)
+                        {
+                            string path = Path.Combine(Server.MapPath("~/Content/photos"), Path.GetFileName(UploadImage.FileName));
+                            UploadImage.SaveAs(path);
+                            ViewBag.FileStatus = "File uploaded successfully.";
+                        }
+
+                        else{
+                            return View();
+                        }
                     }
-                    else
+                    catch (Exception)
+                    {
+
+                        ViewBag.FileStatus = "Error while file uploading.";
+                    }
+                    e.ImagesUrl = UploadImage.FileName;
+
+                    var res = db.Events.Single(a => a.EventId == e.EventId);
+                    db.SaveChanges();
+
+
+                    if (res == null)
                     {
                         return View();
                     }
 
-            }
-                else
-                {
-                    return View();
+                    e.EventId = res.EventId;
+                    db.EventImages.Add(e);
+
+                    db.SaveChanges();
+
+                    return RedirectToAction("ViewGallery");
                 }
-
-                var res = db.Events.Single(a => a.EventId == e.EventId);
-                db.SaveChanges();
-
-
-                if (res == null)
-                {
-                    return View();
-                }
-
-                e.EventId = res.EventId;
-                db.EventImages.Add(e);
-
-                db.SaveChanges();
-
-                return RedirectToAction("ViewGallery");
-
             }
-
+            else
+            {
+                return View();
+            }
 
         }
 
 
         public ActionResult ViewCollections()
         {
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
+
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var user = db.Donations.ToList();
                 if (user == null)
@@ -336,19 +393,37 @@ namespace InlaksAlumniWebsite.Controllers
 
         public ActionResult ViewGallery()
         {
-            ViewBag.Title = "ViewGallery";
-            return View();
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
+
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
+            {
+                var user = db.EventImages.ToList();
+                if (user == null)
+                {
+                    return RedirectToAction("UploadPhoto");
+                }
+                user.Reverse();
+                return View(user);
+            }
         }
 
         //GET
         public ActionResult Edit(int? id)
         {
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
+
             if (id == null || id == 0)
             {
                 return HttpNotFound();
             }
 
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var alumni = db.Alumnis.Where(row => row.AlumniId == id).FirstOrDefault();
                 return View(alumni);
@@ -359,7 +434,7 @@ namespace InlaksAlumniWebsite.Controllers
         [HttpPost]
         public ActionResult Edit(Alumni alumni)
         {
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var emp1 = db.Alumnis.Where(row => row.AlumniId == alumni.AlumniId).FirstOrDefault();
                 if (emp1 == null)
@@ -389,12 +464,17 @@ namespace InlaksAlumniWebsite.Controllers
 
         public ActionResult DeleteAlumni(int? id)
         {
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
+
             if (id == null || id == 0)
             {
                 return HttpNotFound();
             }
 
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var alumni = db.Alumnis.Where(row => row.AlumniId == id).FirstOrDefault();
                 return View(alumni);
@@ -411,7 +491,7 @@ namespace InlaksAlumniWebsite.Controllers
                 return HttpNotFound();
             }
 
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var deleteAlumni = db.Alumnis.Where(row => row.AlumniId == id).FirstOrDefault();
                 db.Alumnis.Remove(deleteAlumni);
@@ -424,12 +504,17 @@ namespace InlaksAlumniWebsite.Controllers
         //GET
         public ActionResult EditAdmin(int? id)
         {
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
+
             if (id == null || id == 0)
             {
                 return HttpNotFound();
             }
 
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var admin = db.Admins.Where(row => row.AdminId == id).FirstOrDefault();
                 return View(admin);
@@ -439,7 +524,7 @@ namespace InlaksAlumniWebsite.Controllers
         [HttpPost]
         public ActionResult EditAdmin(Admin admin)
         {
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var emp1 = db.Admins.Where(row => row.AdminId == admin.AdminId).FirstOrDefault();
                 if (emp1 == null)
@@ -466,12 +551,17 @@ namespace InlaksAlumniWebsite.Controllers
 
         public ActionResult DeleteAdmin(int? id)
         {
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
+
             if (id == null || id == 0)
             {
                 return HttpNotFound();
             }
 
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var admin = db.Admins.Where(row => row.AdminId == id).FirstOrDefault();
                 return View(admin);
@@ -487,7 +577,7 @@ namespace InlaksAlumniWebsite.Controllers
                 return HttpNotFound();
             }
 
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var deleteAdmin = db.Admins.Where(row => row.AdminId == id).FirstOrDefault();
                 db.Admins.Remove(deleteAdmin);
@@ -500,12 +590,17 @@ namespace InlaksAlumniWebsite.Controllers
         //GET
         public ActionResult EditEvent(int? id)
         {
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
+
             if (id == null || id == 0)
             {
                 return HttpNotFound();
             }
 
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var evt = db.Events.Where(row => row.EventId == id).FirstOrDefault();
                 return View(evt);
@@ -515,7 +610,7 @@ namespace InlaksAlumniWebsite.Controllers
         [HttpPost]
         public ActionResult EditEvent(Event e)
         {
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var emp1 = db.Events.Where(row => row.EventId == e.EventId).FirstOrDefault();
                 if (emp1 == null)
@@ -544,12 +639,17 @@ namespace InlaksAlumniWebsite.Controllers
 
         public ActionResult DeleteEvent(int? id)
         {
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
+
             if (id == null || id == 0)
             {
                 return HttpNotFound();
             }
 
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var evt = db.Events.Where(row => row.EventId == id).FirstOrDefault();
                 return View(evt);
@@ -565,7 +665,7 @@ namespace InlaksAlumniWebsite.Controllers
                 return HttpNotFound();
             }
 
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
                 var deleteEvnt = db.Events.Where(row => row.EventId == id).FirstOrDefault();
                 db.Events.Remove(deleteEvnt);
@@ -576,44 +676,121 @@ namespace InlaksAlumniWebsite.Controllers
 
 
 
-        public ActionResult ManageAccount(int? id)
+        public ActionResult ManageAccount(Admin admin)
+        {
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
+
+            if (admin.Password != admin.ConfirmPassword)
+            {
+                return RedirectToAction("UpdateAccount");
+
+            }
+
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
+            {
+                var user = db.Admins.SingleOrDefault(c => c.Username == admin.Username);
+                if (user == null)
+                {
+                    return View();
+                }
+
+                user.Password = admin.Password;
+                user.ConfirmPassword = admin.ConfirmPassword;
+                ViewBag.Message = "Successful";
+                db.SaveChanges();
+
+            }
+            return View();
+        }
+
+
+        public ActionResult DeleteImage(int? id)
+        {
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
+
+            if (id == null || id == 0)
+            {
+                return HttpNotFound();
+            }
+
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
+            {
+                var evt = db.EventImages.Where(row => row.ImageId == id).FirstOrDefault();
+                return View(evt);
+            }
+        }
+
+        [HttpPost]
+        [ActionName("DeleteImage")]
+        public ActionResult ConfirmDeleteImage(int? id)
+        {
+
+            if (id == null || id == 0)
+            {
+                return HttpNotFound();
+            }
+
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
+            {
+                var deleteImg = db.EventImages.Where(row => row.ImageId == id).FirstOrDefault();
+                db.EventImages.Remove(deleteImg);
+                db.SaveChanges();
+                return RedirectToAction("ViewGallery");
+            }
+        }
+
+        public ActionResult DeleteMessage(int? id)
+        {
+            if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Login");
+            }
+
+            if (id == null || id == 0)
+            {
+                return HttpNotFound();
+            }
+
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
+            {
+                var msg = db.Feedbacks.Where(row => row.Id == id).FirstOrDefault();
+                return View(msg);
+            }
+        }
+
+        [HttpPost]
+        [ActionName("DeleteMessage")]
+        public ActionResult ConfirmDeleteMessage(int? id)
         {
             if (id == null || id == 0)
             {
                 return HttpNotFound();
             }
 
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
-                var admin = db.Admins.Where(row => row.AdminId == id).FirstOrDefault();
-                return View(admin);
+                var deleteMsg = db.Feedbacks.Where(row => row.Id == id).FirstOrDefault();
+                db.Feedbacks.Remove(deleteMsg);
+                db.SaveChanges();
+                return RedirectToAction("Inbox");
             }
         }
 
-        [HttpPost]
-        public ActionResult ManageAccount(Admin admin)
+
+        public Boolean AuthenticateUser()
         {
-            using (InlaksAlumniDbContext db = new InlaksAlumniDbContext())
+            if (Session["User"] != null)
             {
-                var emp1 = db.Admins.Where(row => row.AdminId == admin.AdminId).FirstOrDefault();
-                if (emp1 == null)
-                {
-                    return RedirectToAction("ManageAccount");
-                }
-
-                emp1.Username = admin.Username;
-                emp1.Password = admin.Password;
-                emp1.ConfirmPassword = admin.ConfirmPassword;
-
-
-
-                int res = db.SaveChanges();
-                if (res > 0)
-                {
-                    ViewBag.Message = "Successfully Updated";
-                }
+                return true;
             }
-            return View();
+
+            return false;
         }
     }
 }

@@ -6,15 +6,15 @@ using System.Web;
 
 namespace InlaksAlumniWebsite.Models
 {
-    public class InlaksAlumniDbContext : DbContext
+    public class InlaksAlumniContext : DbContext
     {
-        public InlaksAlumniDbContext() : base("MyConn") { }
+        public InlaksAlumniContext() : base("MyConn") { }
 
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Alumni> Alumnis { get; set; }
         public DbSet<Donation> Donations { get; set; }
         public DbSet<EventImage> EventImages { get; set; }
-
+        public DbSet<Feedback> Feedbacks { get; set; }
     }
 }

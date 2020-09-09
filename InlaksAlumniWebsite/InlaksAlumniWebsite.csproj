@@ -205,33 +205,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008272333119_InitialCreate.cs" />
-    <Compile Include="Migrations\202008272333119_InitialCreate.designer.cs">
-      <DependentUpon>202008272333119_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008280622292_Migration-Add-Events.cs" />
-    <Compile Include="Migrations\202008280622292_Migration-Add-Events.designer.cs">
-      <DependentUpon>202008280622292_Migration-Add-Events.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008282013107_Migration-Add-Alumnis.cs" />
-    <Compile Include="Migrations\202008282013107_Migration-Add-Alumnis.designer.cs">
-      <DependentUpon>202008282013107_Migration-Add-Alumnis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009011247271_Migration-Add-Donations.cs" />
-    <Compile Include="Migrations\202009011247271_Migration-Add-Donations.Designer.cs">
-      <DependentUpon>202009011247271_Migration-Add-Donations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009011919537_Migration-Add-EventImages.cs" />
-    <Compile Include="Migrations\202009011919537_Migration-Add-EventImages.Designer.cs">
-      <DependentUpon>202009011919537_Migration-Add-EventImages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Alumni.cs" />
     <Compile Include="Models\Donation.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventImage.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InlaksAlumniDbContext.cs" />
     <Compile Include="Models\ManageAccount.cs" />
@@ -263,6 +243,25 @@
     <Content Include="Content\event.html" />
     <Content Include="Content\gallery.html" />
     <Content Include="Content\icons.html" />
+    <Content Include="Content\images\1DD9833E-66B1-4D41-B515-69FAE9796E8E.jpeg" />
+    <Content Include="Content\images\Chief-Henry-O.-Okolo.jpg" />
+    <Content Include="Content\images\code-academy-1024x684.jpg" />
+    <Content Include="Content\images\Code-Academy-background.jpg" />
+    <Content Include="Content\images\cybersecurity.jpg" />
+    <Content Include="Content\images\Femi-Adeoti.jpg" />
+    <Content Include="Content\images\INLAKS-1.jpg" />
+    <Content Include="Content\images\INLAKS-2.jpg" />
+    <Content Include="Content\images\INLAKS-3.jpg" />
+    <Content Include="Content\images\INLAKS-4.jpg" />
+    <Content Include="Content\images\INLAKS-5.jpg" />
+    <Content Include="Content\images\INLAKS-6.jpg" />
+    <Content Include="Content\images\man-smiling-1.jpg" />
+    <Content Include="Content\images\Moodys.jpg" />
+    <Content Include="Content\images\Olufemi-Muraino.jpg" />
+    <Content Include="Content\images\paystack-badge-cards-ngn.png" />
+    <Content Include="Content\images\Software-developer.jpg" />
+    <Content Include="Content\images\team.jpeg" />
+    <Content Include="Content\images\Tope-Dare.jpg" />
     <Content Include="Content\index.html" />
     <Content Include="Content\login.html" />
     <Content Include="Content\payment.html" />
@@ -282,6 +281,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\database\InlaksAlumniDb.bak" />
+    <Content Include="Content\images\software-developer.webp" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -360,6 +360,12 @@
     <Content Include="Views\Admin\DeleteEvent.cshtml" />
     <Content Include="Views\Admin\ManageAccount.cshtml" />
     <Content Include="Views\Shared\_HeaderAndSidePanel.cshtml" />
+    <Content Include="Views\Shared\_HeaderPartial.cshtml" />
+    <Content Include="Views\Admin\DeleteImage.cshtml" />
+    <Content Include="Views\Home\EmployeeProfile.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
+    <Content Include="Views\Admin\DeleteMessage.cshtml" />
+    <Content Include="Views\Shared\_AlumniSideAndHeaderPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -370,8 +376,8 @@
     <Folder Include="Content\admin\lib\" />
     <Folder Include="Content\css\" />
     <Folder Include="Content\fonts\" />
-    <Folder Include="Content\images\" />
     <Folder Include="Content\js\" />
+    <Folder Include="Content\photos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -380,23 +386,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008272333119_InitialCreate.resx">
-      <DependentUpon>202008272333119_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008280622292_Migration-Add-Events.resx">
-      <DependentUpon>202008280622292_Migration-Add-Events.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008282013107_Migration-Add-Alumnis.resx">
-      <DependentUpon>202008282013107_Migration-Add-Alumnis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009011247271_Migration-Add-Donations.resx">
-      <DependentUpon>202009011247271_Migration-Add-Donations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009011919537_Migration-Add-EventImages.resx">
-      <DependentUpon>202009011919537_Migration-Add-EventImages.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

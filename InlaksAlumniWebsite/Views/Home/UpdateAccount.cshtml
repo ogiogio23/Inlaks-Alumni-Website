@@ -1,56 +1,53 @@
-﻿
+﻿@using InlaksAlumniWebsite.Models
 @{
     ViewBag.Title = "UpdateAccount";
-    Layout = "~/Views/Shared/_InlaksAlumniLayout.cshtml";
+    Layout = "~/Views/Shared/_InlaksAdminLayout.cshtml";
 }
 
-<div class="banner inner-banner">
-    <div class="header-nav">
-        <!-- header-three -->
-        <nav class="navbar navbar-default">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    Menu
-                </button>
+@{
+     var res = Session["User"] as Alumni;
+}
+
+
+@Html.Partial("_AlumniSideAndHeaderPanel")
+
+<div id="page-wrapper">
+    <h2 class="title1"> Change your password</h2>
+
+    <form action="" method="post">
+        <input name="__RequestVerificationToken" type="hidden" value="ITJv6jIZOTvBH6jQOH5Lh0Poixv6-KlPkODNXXf0iY2FHkkwEPB2OL-b6WlZvFEtNyy5WrgggjD4_IpfJdgeSDfxy1ZqF7VUF9Lk5Ky7_eI1" />    <div class="form-horizontal">
+
+            <hr />
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Username">Username</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="Username is required!" id="Username" name="Username" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Username" data-valmsg-replace="true"></span>
+                </div>
             </div>
-            <!-- top-nav -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="index">Home</a></li>
-                    <li><a href="about">About</a></li>
-                    <li><a href="event">Event</a></li>
-                    <li><a href="gallery">Gallery</a></li>
-                    <li>
-                        <a href="#" data-toggle="dropdown">Donations<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="payment">Payment Options</a></li>
-                            <li><a href="uploadevidence">Upload Payment Evidence</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact">Contact Us</a></li>
-                    <li>
-                        <a href="#" data-toggle="dropdown">Manage Account<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="profile">Alumni Profile</a></li>
-                            <li><a href="updateaccount">Update Account</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="clearfix"> </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Password">Password</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line password" data-val="true" data-val-regex="The field Password must match the regular expression &#39;^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})$&#39;." data-val-regex-pattern="^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})$" data-val-required="Password is required!" id="Password" name="Password" type="password" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                </div>
             </div>
-        </nav>
-    </div>
-</div>
 
-<div class="w3ls-section">
-    <div class="container">
-        <h2 class="h3-w3l">Update Account</h2>
-        <div class="grid_3 grid_4 w3layouts">
+            <div class="form-group">
+                <label class="control-label col-md-2" for="ConfirmPassword">ConfirmPassword</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line password" data-val="true" data-val-equalto="Please confirm your password" data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+                </div>
+            </div>
 
-
-
+                    <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+            </div>
         </div>
+    </form>
     </div>
-</div>
-

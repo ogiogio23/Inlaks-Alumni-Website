@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<InlaksAlumniWebsite.Models.EventImage>
 @{
     ViewBag.Title = "Gallery";
     Layout = "~/Views/Shared/_InlaksAlumniLayout.cshtml";
@@ -21,110 +21,48 @@
                     <li><a href="about">About</a></li>
                     <li><a href="event">Event</a></li>
                     <li><a href="gallery" class="active">Gallery</a></li>
-                    <!--<li><a href="icons.html" data-toggle="dropdown">Donations<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="payment.html">Payment Options</a></li>
-                            <li><a href="upload.html">Upload Payment Evidence</a></li>
-                        </ul>
-                    </li>-->
                     <li><a href="contact">Contact Us</a></li>
-                    <!--<li><a href="#" data-toggle="dropdown">Manage Account<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="profile.html">Alumni Profile</a></li>
-                            <li><a href="update.html">Update Account</a></li>
-                        </ul>
-                    </li>-->
                 </ul>
                 <div class="clearfix"> </div>
             </div>
         </nav>
     </div>
+    <div class="carousel-caption" style="background-color: rgba(0,0,0,0.3); border-radius: 50px; font-size: 20px;">
+        <h4 style="font-size: 50px;">Gallery</h4>
+        <p>Home > Gallery</p>
+    </div>
 </div>
 <!-- banner -->
 <!-- gallery -->
+
 <div class="w3ls-section gallery">
     <div class="container">
+        <div class="row">
+
+
         <div class="w3ls-title">
-            <h2 class="h3-w3l">Gallery</h2>
+            <h2 class="h3-w3l"></h2>
         </div>
         <div class="gallery-grids-top">
             <div class="gallery-grids agileits-w3layouts">
+@foreach (var item in Model)
+{
                 <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img">
-                    <a class="example-image-link w3-agilepic" href="~/Content/images/g1.jpg" data-lightbox="example-set" data-title="">
-                        <img class="example-image img-responsive" src="~/Content/images/g1.jpg" alt="" />
+                    <a class="example-image-link w3-agilepic" href="~/Content/photos/@item.ImagesUrl" data-lightbox="example-set" data-title="">
+                        <img class="example-image img-responsive" src="~/Content/photos/@item.ImagesUrl" alt="" />
                         <div class="w3ls-overlay">
                             <h4>Our Gallery</h4>
                         </div>
                     </a>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img hover ehover14">
-                    <a class="example-image-link w3-agilepic" href="~Content/images/g2.jpg" data-lightbox="example-set" data-title="">
-                        <img class="example-image img-responsive" src="~/Content/images/g2.jpg" alt="" />
-                        <div class="w3ls-overlay">
-                            <h4>Our Gallery</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img hover ehover14">
-                    <a class="example-image-link w3-agilepic" href="~/Content/images/g3.jpg" data-lightbox="example-set" data-title="">
-                        <img class="example-image img-responsive" src="~/Content/images/g3.jpg" alt="" />
-                        <div class="w3ls-overlay">
-                            <h4>Our Gallery</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img gallery-mdl hover ehover14">
-                    <a class="example-image-link w3-agilepic" href="~/Content/images/g3.jpg" data-lightbox="example-set" data-title="">
-                        <img class="example-image img-responsive" src="~/Content/images/g3.jpg" alt="" />
-                        <div class="w3ls-overlay">
-                            <h4>Our Gallery</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img gallery-mdl hover ehover14">
-                    <a class="example-image-link w3-agilepic" href="~/Content/images/g4.jpg" data-lightbox="example-set" data-title="">
-                        <img class="example-image img-responsive" src="~/Content/images/g4.jpg" alt="" />
-                        <div class="w3ls-overlay">
-                            <h4>Our Gallery</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img hover ehover14">
-                    <a class="example-image-link w3-agilepic" href="~/Content/images/g5.jpg" data-lightbox="example-set" data-title="">
-                        <img class="example-image img-responsive" src="~/Content/images/g5.jpg" alt="" />
-                        <div class="w3ls-overlay">
-                            <h4>Our Gallery</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img hover ehover14">
-                    <a class="example-image-link w3-agilepic" href="~/Content/images/g6.jpg" data-lightbox="example-set" data-title="">
-                        <img class="example-image img-responsive" src="~/Content/images/g6.jpg" alt="" />
-                        <div class="w3ls-overlay">
-                            <h4>Our Gallery</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img hover ehover14">
-                    <a class="example-image-link w3-agilepic" href="~/Content/images/g2.jpg" data-lightbox="example-set" data-title="">
-                        <img class="example-image img-responsive" src="~/Content/images/g2.jpg" alt="" />
-                        <div class="w3ls-overlay">
-                            <h4>Our Gallery</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-6 gallery-grid-img gallery-mdl hover ehover14">
-                    <a class="example-image-link w3-agilepic" href="~/Content/images/g1.jpg" data-lightbox="example-set" data-title="">
-                        <img class="example-image img-responsive" src="~/Content/images/g1.jpg" alt="" />
-                        <div class="w3ls-overlay">
-                            <h4>Our Gallery</h4>
-                        </div>
-                    </a>
-                </div>
+}
                 <div class="clearfix"> </div>
                 <script src="~/Content/js/lightbox-plus-jquery.min.js"></script>
             </div>
         </div>
+
+        </div>
     </div>
 </div>
+
 <!-- //gallery -->

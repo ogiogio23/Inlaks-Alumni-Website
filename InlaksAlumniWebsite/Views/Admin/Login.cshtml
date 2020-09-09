@@ -28,6 +28,10 @@
         <div class="widget-shadow">
             <div class="login-body">
                 <form action="" method="post">
+                    @if (ViewBag.Message != null)
+                    {
+                        <p style="color:#ff1a1a">@ViewBag.Message</p>
+                    }
                     <input type="email" class="user" name="Email" placeholder="Enter Your Email" required="">
                     <input type="password" name="Password" class="lock" placeholder="Password" required="">
                     <div class="forgot-grid">

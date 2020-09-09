@@ -1,56 +1,59 @@
 ﻿
 @{
-    ViewBag.Title = "UploadImage";
-    Layout = "~/Views/Shared/_InlaksAlumniLayout.cshtml";
+    ViewBag.Title = "UploadEvidence";
+    Layout = "~/Views/Shared/_InlaksAdminLayout.cshtml";
 }
 
-<div class="banner inner-banner">
-    <div class="header-nav">
-        <!-- header-three -->
-        <nav class="navbar navbar-default">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    Menu
-                </button>
+@Html.Partial("_AlumniSideAndHeaderPanel")
+
+<div id="page-wrapper">
+    <h2 class="title1">Upload Payment Evidence</h2>
+
+    <form action="" method="post">
+        <input name="__RequestVerificationToken" type="hidden" value="X-HhrZddGhCAx3JUatTxdMwn5AwnvbDOyXC-Gh8XTMcp0ndRIse0BF_vGFmHyZ4DehGcOlz-DA_LV3ucLJdOrcZkYGFM8qQgQ0hforP0ESA1" />        <div class="form-horizontal">
+
+            <hr />
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="DonationTitle">Donation Title</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="This field is required!" id="DonationTitle" name="DonationTitle" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="DonationTitle" data-valmsg-replace="true"></span>
+                </div>
             </div>
-            <!-- top-nav -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="index">Home</a></li>
-                    <li><a href="about">About</a></li>
-                    <li><a href="event">Event</a></li>
-                    <li><a href="gallery">Gallery</a></li>
-                    <li>
-                        <a href="#" data-toggle="dropdown">Donations<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="payment">Payment Options</a></li>
-                            <li><a href="uploadevidence">Upload Payment Evidence</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact">Contact Us</a></li>
-                    <li>
-                        <a href="#" data-toggle="dropdown">Manage Account<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="alumniprofile">Alumni Profile</a></li>
-                            <li><a href="updateaccount">Update Account</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="clearfix"> </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Amount">Amount</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-number="The field Amount must be a number." data-val-range="The field Amount must be between 1 and 100000." data-val-range-max="100000" data-val-range-min="1" data-val-required="The Amount field is required." id="Amount" name="Amount" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Amount" data-valmsg-replace="true"></span>
+                </div>
             </div>
-        </nav>
-    </div>
-</div>
 
-<div class="w3ls-section">
-    <div class="container">
-        <h2 class="h3-w3l">Payment Evidence</h2>
-        <div class="grid_3 grid_4 w3layouts">
+            <div class="form-group">
+                <label class="control-label col-md-2" for="DonationType">Donation Type</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="This field is required!" id="DonationType" name="DonationType" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="DonationType" data-valmsg-replace="true"></span>
+                </div>
+            </div>
 
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Email">Email</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" id="Email" name="Email" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                </div>
+            </div>
 
-
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </div>
         </div>
-    </div>
+    </form>
+
+
 </div>
 

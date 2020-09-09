@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<InlaksAlumniWebsite.Models.Event>
 @{
     ViewBag.Title = "Event";
     Layout = "~/Views/Shared/_InlaksAlumniLayout.cshtml";
@@ -18,64 +18,113 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="index">Home</a></li>
-                    <li><a href="about">About</a></li>
+                    <li><a href="about" >About</a></li>
                     <li><a href="event" class="active">Event</a></li>
                     <li><a href="gallery">Gallery</a></li>
-                    <!--<li><a href="icons.html" data-toggle="dropdown">Donations<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="payment.html">Payment Options</a></li>
-                            <li><a href="upload.html">Upload Payment Evidence</a></li>
-                        </ul>
-                    </li>-->
                     <li><a href="contact">Contact Us</a></li>
-                    <!--<li><a href="#" data-toggle="dropdown">Manage Account<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="profile.html">Alumni Profile</a></li>
-                            <li><a href="update.html">Update Account</a></li>
-                        </ul>
-                    </li>-->
                 </ul>
                 <div class="clearfix"> </div>
             </div>
         </nav>
     </div>
+
     <!-- banner-text -->
     <!-- banner -->
+    <div class="carousel-caption" style="background-color: rgba(0,0,0,0.3); border-radius: 50px; font-size: 20px;">
+        <h1 style="font-size: 50px">Events</h1>
+        <p>Home > Event</p>
+    </div>
 </div>
 
 
-<div class="agileits_w3layouts-services-mid">
-    <div class="col-md-5 services-mid-img">
-    </div>
-    <div class="col-md-5 services-mid-text">
-    </div>
-    <div class="clearfix"> </div>
-</div>
-<div class="w3ls-section">
-    <div class="container">
-        <div class="services-w3ls-row agileits-w3layouts">
-            <div class="col-md-3 col-sm-3 col-xs-6 services-grid agileits-w3layouts">
-                <i class="fa fa-user-secret" aria-hidden="true"></i>
-                <h5>Secure Online Banking</h5>
-                <p>Sapiente delectus maiores itaque earum rerum hic tenetur a alias phasellus.</p>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Event Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <!--span aria-hidden="true">&times;</!--span>-->
+                </button>
             </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 services-grid agileits-w3layouts">
-                <i class="fa fa-comments" aria-hidden="true"></i>
-                <h5>24/7 Personal Support</h5>
-                <p>Tenetur a sapiente itaque earum rerum hic delectus maiores alias phasellus.</p>
+            <div class="modal-body">
+                ...
             </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 services-grid agileits-w3layouts">
-                <i class="fa fa-gift" aria-hidden="true"></i>
-                <h5>Gift vouchers</h5>
-                <p>Itaque earum rerum hic tenetur a sapiente delectus maiores alias phasellus.</p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
             </div>
-            <div class="col-md-3 col-sm-3 col-xs-6 services-grid agileits-w3layouts">
-                <i class="fa fa-list-alt" aria-hidden="true"></i>
-                <h5>insta banking</h5>
-                <p>Earum rerum hic tenetur a alias sapiente delectus maiores itaque phasellus.</p>
-            </div>
-            <div class="clearfix"> </div>
         </div>
     </div>
 </div>
+
+
+<div class="w3ls-section" id="inner-about">
+    <!--<div class="agileits_w3layouts-services-mid">
+        <div class="col-md-5 services-mid-img">
+        </div>
+        <div class="col-md-5 services-mid-text">
+        </div>
+        <div class="clearfix"> </div>
+    </div>-->
+    <div class="w3ls-section">
+        <div class="container">
+            <div class="services-w3ls-row agileits-w3layouts" style="box-shadow: 5px 5px 5px 5px grey">
+
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center; color: black; font-size:18px;">Event Title</th>
+                            <th style="text-align:center; color: black; font-size:18px;">Event Location</th>
+                            <th style="text-align:center; color: black; font-size:18px;">Event Date</th>
+                            <th style="text-align:center; color: black; font-size:18px;">Event Time</th>
+                            <th style="text-align:center; color: black; font-size:18px;">Date Registered</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EventTitle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EventLocation)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EventDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EventTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateRegistered)
+                                </td>
+
+                                <td>
+                                    @*
+    <div>
+        @Html.ActionLink("View", "EditEvent/" + item.EventId, "Home", new { @class = "btn btn-default", @style = "border-radius: 50px; color: rgb(10, 204, 149); border-color: rgb(10, 204, 149);" })
+    </div>
+                                    *@
+
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalCenter" style="border-radius:50px; background-color:#49c7ed; color:white">
+                                        Read More
+                                    </button>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    </div>
 

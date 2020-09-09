@@ -22,3 +22,10 @@ select,
 textarea {
     max-width: 280px;
 }
+.about-w3right{
+    background-image:url(~/Content/images/man-smiling-1.jpg)
+}
+
+#MyClass{
+    box-shadow: 5px 5px 5px grey;
+}
