@@ -1,8 +1,13 @@
-﻿
+﻿@using InlaksAlumniWebsite.Models
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_InlaksAlumniLayout.cshtml";
 }
+
+@{
+    var res = Session["User"] as Alumni;
+}
+
 
 <div class="banner inner-banner">
     <div class="header-nav">
@@ -50,12 +55,45 @@
 
 <div class="w3ls-section">
     <div class="container">
-        <h2 class="h3-w3l">Login</h2>
+
         <div class="grid_3 grid_4 w3layouts">
 
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4" style="box-shadow: 5px 5px 5px 10px lightgrey">
+                    <h2 class="h3-w3l" style="color:#49c7ed; margin-top:15px;">Login</h2>
 
+                    <form action="" method="post">
+                        @if (ViewBag.Message != "")
+                        {
+                            <p style="color:#ff1a1a;">@ViewBag.Message</p>
+                        }
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="email" type="text" class="form-control" name="Email" placeholder="Email">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input id="password" type="password" class="form-control" name="Password" placeholder="Password">
+                        </div>
+                        <span><input type="checkbox" /> Remember Me</span>
+                        <div class="input-group">
 
+                            <input type="submit" value="Login" name="Login" class="btn btn-primary">
+                        </div>
+                        <p>Don't Have an Account ?<a href="register">Create an account</a></p>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+<!--<form action="#" method="post">
+    <input type="email" class="ggg" name="Email" placeholder="E-MAIL" required="">
+    <input type="password" class="ggg" name="Password" placeholder="PASSWORD" required="">
+    <span><input type="checkbox" />Remember Me</span>
+    <h6><a href="#">Forgot Password?</a></h6>
+    <div class="clearfix"></div>
+    <input type="submit" value="Sign In" name="login">
+</form>
+<p>Don't Have an Account ?<a href="registration.html">Create an account</a></p>-->

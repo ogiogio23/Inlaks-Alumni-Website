@@ -13,8 +13,10 @@ namespace InlaksAlumniWebsite.Models
 
         public string ImagesUrl { get; set; }
 
+        public string Name { get; set; }
+
         public int EventId { get; set; }
 
-        public EventImage eventImage { get; set; }
+        public Event Event { get; set; }
     }
 }

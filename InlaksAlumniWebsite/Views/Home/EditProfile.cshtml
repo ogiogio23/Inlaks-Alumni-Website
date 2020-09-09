@@ -1,0 +1,213 @@
+﻿@using InlaksAlumniWebsite.Models
+
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/_InlaksAdminLayout.cshtml";
+
+    var user = Session["User"] as Alumni;
+}
+
+<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+    <!--left-fixed -navigation-->
+    <aside class="sidebar-left">
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h1><a class="navbar-brand" href="#"><span class="fa fa-area-chart"></span> Alumni<span class="dashboard_text">dashboard</span></a></h1>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="sidebar-menu">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="employeeprofile">
+                            <i class="fa fa-user"></i> <span> Alumni Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-user"></i> <span> Update Account</span>
+                        </a>
+                    </li>
+
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-money"></i> <span>Donations</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="payment"><i class="fa fa-angle-right"></i>Payment Options</a></li>
+                            <!--<li><a href="updatedonation"><i class="fa fa-angle-right"></i> Update Donations</a></li>-->
+                            <li><a href="uploadevidence"><i class="fa fa-angle-right"></i> Upload Payment Evidence</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+    </aside>
+</div>
+
+<div class="sticky-header header-section ">
+    <div class="header-left">
+
+        <!--toggle button start-->
+        <button id="showLeftPush"><i class="fa fa-bars"></i></button>
+        <!--toggle button end-->
+        <div class="profile_details_left">
+            <!--notifications of menu start -->
+            <ul class="nofitications-dropdown"></ul>
+            <div class="clearfix"> </div>
+        </div>
+        <!--notification menu end -->
+        <div class="clearfix"> </div>
+    </div>
+    <div class="header-right">
+
+        <div class="profile_details">
+            <ul>
+                <li class="dropdown profile_details_drop">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <div class="profile_img">
+                            <!--<span class="prfil-img"><img src="images/2.jpg" alt=""> </span>-->
+                            <div class="user-name">
+                                <p>Alumni</p>
+                                <span></span>
+                            </div>
+                            <i class="fa fa-angle-down lnr"></i>
+                            <i class="fa fa-angle-up lnr"></i>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu drp-mnu">
+                        <li> <a href="login"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+
+<div id="page-wrapper">
+    @{
+        if (user != null)
+        {
+
+    <form action="" method="post">
+        <input name="__RequestVerificationToken" type="hidden" value="ITJv6jIZOTvBH6jQOH5Lh0Poixv6-KlPkODNXXf0iY2FHkkwEPB2OL-b6WlZvFEtNyy5WrgggjD4_IpfJdgeSDfxy1ZqF7VUF9Lk5Ky7_eI1" />    <div class="form-horizontal">
+
+            <hr />
+            <div class="form-group">
+                <label class="control-label col-md-2" for="FirstName">FirstName</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="First Name is required!" id="FirstName" name="FirstName" type="text" value="@user.FirstName" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="LastName">LastName</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="Last Name is required!" id="LastName" name="LastName" type="text" value="@user.LastName" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="LastName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Email">Email</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-email="Invalid Email" data-val-required="Email is required!" id="Email" name="Email" type="email" value="@user.Email" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="PastEmployeeId">PastEmployeeId</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" id="PastEmployeeId" readonly="readonly" name="PastEmployeeId" type="text" value="@user.PastEmployeeId" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="PastEmployeeId" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="PhoneNumber">Phone Number</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-phone="The Phone Number field is not a valid phone number." data-val-regex="Entered phone format is not valid." data-val-regex-pattern="^\(?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" data-val-required="Phone Number Required!" id="PhoneNumber" name="PhoneNumber" type="tel" value="@user.PhoneNumber" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="DateOfEmployment">Release Date</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" id="DateOfEmployment" readonly="readonly" name="DateOfEmployment" type="date" value="@user.DateOfEmployment" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="DateOfEmployment" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="PositionHeld">PositionHeld</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" readonly="readonly" data-val-required="This field is required!" id="PositionHeld" name="PositionHeld" type="text" value="@user.PositionHeld" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="PositionHeld" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="DateLeft">Release Date</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" id="DateLeft" name="DateLeft" readonly="readonly" type="date" value="@user.DateLeft" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="DateLeft" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Username">Username</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="Username is required!" id="Username" name="Username" type="text" value="@user.Username" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Username" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Gender">Gender</label>
+                <div class="col-md-4">
+                    <select class="form-control text-box single-line" data-val="true" data-val-required="This field is required!" id="Gender" name="Gender" type="text" value="@user.Gender">
+                        <option selected="selected" value="male">male</option>
+                        <option value="female">female</option>
+                    </select>
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Gender" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save Changes" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </form>
+        }
+    }
+    <div>
+        @Html.ActionLink("Back to profile", "EmployeeProfile")
+    </div>
+    </div>

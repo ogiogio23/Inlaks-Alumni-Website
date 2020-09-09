@@ -1,0 +1,111 @@
+﻿@model InlaksAlumniWebsite.Models.Alumni
+
+@{
+    ViewBag.Title = "EmployeeProfile";
+    Layout = "~/Views/Shared/_InlaksAdminLayout.cshtml";
+}
+
+
+
+@Html.Partial("_AlumniSideAndHeaderPanel")
+
+<div id="page-wrapper">
+    <h2 class="title1"> Alumni Profile</h2>
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PastEmployeeId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PastEmployeeId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOfEmployment)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateOfEmployment)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PositionHeld)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PositionHeld)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateLeft)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateLeft)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Username)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                @Html.ActionLink("Edit Profile", "EditProfile", "Home")
+                <!--<input type="submit" value="Edit Profile" class="btn btn-primary" />--> |
+            </div>
+        }
+    </div>
+    </div>

@@ -1,193 +1,49 @@
-﻿@model InlaksAlumniWebsite.Models.Admin
-
+﻿
 @{
     ViewBag.Title = "ManageAccount";
     Layout = "~/Views/Shared/_InlaksAdminLayout.cshtml";
 }
 
-<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-    <!--left-fixed -navigation-->
-    <aside class="sidebar-left">
-        <nav class="navbar navbar-inverse">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span> Admin<span class="dashboard_text">dashboard</span></a></h1>
+@Html.Partial("_HeaderPartial")
+
+<div id="page-wrapper">
+    <h2 class="title1"> Change your password</h2>
+
+    <form action="" method="post">
+        <input name="__RequestVerificationToken" type="hidden" value="ITJv6jIZOTvBH6jQOH5Lh0Poixv6-KlPkODNXXf0iY2FHkkwEPB2OL-b6WlZvFEtNyy5WrgggjD4_IpfJdgeSDfxy1ZqF7VUF9Lk5Ky7_eI1" />    <div class="form-horizontal">
+
+            <hr />
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Username">Username</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="Username is required!" id="Username" name="Username" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Username" data-valmsg-replace="true"></span>
+                </div>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="sidebar-menu">
-                    <li class="header">MAIN NAVIGATION</li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-laptop"></i>
-                            <span>Admin</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="createadmin"><i class="fa fa-angle-right"></i> Create</a></li>
-                            <li><a href="updateadmin"><i class="fa fa-angle-right"></i> Update Admin</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-photo"></i> <span>Gallery</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="uploadphoto"><i class="fa fa-angle-right"></i> upload Event Photos</a></li>
-                            <li><a href="viewgallery"><i class="fa fa-angle-right"></i> View Gallery</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-laptop"></i>
-                            <span>Alumni</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="createalumni"><i class="fa fa-angle-right"></i> Create Alumni</a></li>
-                            <li><a href="updatealumni"><i class="fa fa-angle-right"></i> Update Alumni</a></li>
-                        </ul>
-                    </li>
 
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-money"></i> <span>Donations</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="createdonation"><i class="fa fa-angle-right"></i> Create Donations</a></li>
-                            <!--<li><a href="updatedonation"><i class="fa fa-angle-right"></i> Update Donations</a></li>-->
-                            <li><a href="viewcollections"><i class="fa fa-angle-right"></i> View Collections</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                            <i class="fa fa-angle-left pull-right"></i><small class="label pull-right label-info1">08</small>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="inbox"><i class="fa fa-angle-right"></i> Mail Inbox</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-folder"></i> <span>Events</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="createevent"><i class="fa fa-angle-right"></i> Create Event</a></li>
-                            <li><a href="manageevent"><i class="fa fa-angle-right"></i> Manage Event</a></li>
-                        </ul>
-                    </li>
-                </ul>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Password"> New Password</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line password" data-val="true" data-val-regex="The field Password must match the regular expression &#39;^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})$&#39;." data-val-regex-pattern="^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})$" data-val-required="Password is required!" id="Password" name="Password" type="password" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                </div>
             </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-    </aside>
-</div>
-<!--left-fixed -navigation-->
-<!---728x90--->
-<!-- header-starts -->
-<div class="sticky-header header-section ">
-    <div class="header-left">
 
-        <!--toggle button start-->
-        <button id="showLeftPush"><i class="fa fa-bars"></i></button>
-        <!--toggle button end-->
-        <div class="profile_details_left">
-            <!--notifications of menu start -->
-            <ul class="nofitications-dropdown"></ul>
-            <div class="clearfix"> </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="ConfirmPassword">ConfirmPassword</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line password" data-val="true" data-val-equalto="Please confirm your password" data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+            </div>
         </div>
-        <!--notification menu end -->
-        <div class="clearfix"> </div>
-    </div>
-    <div class="header-right">
-
-
-
-
-        <div class="profile_details">
-            <ul>
-                <li class="dropdown profile_details_drop">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <div class="profile_img">
-                            <!--<span class="prfil-img"><img src="images/2.jpg" alt=""> </span>-->
-                            <div class="user-name">
-                                <p>Administrator</p>
-                                <span></span>
-                            </div>
-                            <i class="fa fa-angle-down lnr"></i>
-                            <i class="fa fa-angle-up lnr"></i>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu drp-mnu">
-                        <li> <a href="manageaccount"><i class="fa fa-user"></i> Manage Account</a> </li>
-                        <li> <a href="login"><i class="fa fa-sign-out"></i> Logout</a> </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="clearfix"> </div>
-    </div>
-    <div class="clearfix"> </div>
+    </form>
 </div>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.AdminId)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

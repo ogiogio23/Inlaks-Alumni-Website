@@ -14,6 +14,12 @@ namespace InlaksAlumniWebsite
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "DeleteMessage",
+                url: "deletemessage/{id}",
+                defaults: new { controller = "Admin", action = "DeleteMessage" }
+            );
+
+            routes.MapRoute(
                 name: "DeleteEvent",
                 url: "deleteevent/{id}",
                 defaults: new { controller = "Admin", action = "DeleteEvent" }
