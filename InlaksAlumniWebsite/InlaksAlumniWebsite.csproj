@@ -240,6 +240,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\contact.html" />
+    <Content Include="Content\database\Inlaks_Alumni.sql" />
     <Content Include="Content\event.html" />
     <Content Include="Content\gallery.html" />
     <Content Include="Content\icons.html" />
@@ -366,6 +367,7 @@
     <Content Include="Views\Home\EditProfile.cshtml" />
     <Content Include="Views\Admin\DeleteMessage.cshtml" />
     <Content Include="Views\Shared\_AlumniSideAndHeaderPanel.cshtml" />
+    <Content Include="Views\Shared\_HeaderNavBarPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
