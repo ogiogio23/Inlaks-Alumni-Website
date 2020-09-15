@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace InlaksAlumniWebsite.Controllers
 {
@@ -210,7 +212,7 @@ namespace InlaksAlumniWebsite.Controllers
 
 
 
-        public ActionResult Inbox()
+        public ActionResult Inbox(int? page)
         {
             if (!this.AuthenticateUser())
             {
@@ -224,7 +226,7 @@ namespace InlaksAlumniWebsite.Controllers
             }
             using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
-                var feed = db.Feedbacks.ToList();
+                var feed = db.Feedbacks.ToList().ToPagedList(page ?? 1, 8);
                 if (feed == null)
                 {
                     return RedirectToAction("Inbox");
@@ -246,7 +248,7 @@ namespace InlaksAlumniWebsite.Controllers
 
 
         //List of registered Administrators
-        public ActionResult UpdateAdmin()
+        public ActionResult UpdateAdmin(int? page)
         {
             if (!this.AuthenticateUser())
             {
@@ -255,7 +257,7 @@ namespace InlaksAlumniWebsite.Controllers
 
             using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
-                var user = db.Admins.ToList();
+                var user = db.Admins.ToList().ToPagedList(page ?? 1, 5);
                 if (user == null)
                 {
                     return RedirectToAction("UpdateAdmin");
@@ -267,7 +269,7 @@ namespace InlaksAlumniWebsite.Controllers
 
         }
 
-        public ActionResult UpdateAlumni()
+        public ActionResult UpdateAlumni(int? page)
         {
             if (!this.AuthenticateUser())
             {
@@ -276,7 +278,7 @@ namespace InlaksAlumniWebsite.Controllers
 
             using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
-                var user = db.Alumnis.ToList();
+                var user = db.Alumnis.ToList().ToPagedList(page?? 1, 5);
                 if (user == null)
                 {
                     return RedirectToAction("UpdateAlumni");
@@ -295,11 +297,11 @@ namespace InlaksAlumniWebsite.Controllers
             return View();
         }
 
-        public ActionResult ManageEvent()
+        public ActionResult ManageEvent(int ? page)
         {
             using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
-                var user = db.Events.ToList();
+                var user = db.Events.ToList().ToPagedList(page ?? 1, 5);
                 if (user == null)
                 {
                     return RedirectToAction("ManageEvent");
@@ -391,7 +393,7 @@ namespace InlaksAlumniWebsite.Controllers
             }
         }
 
-        public ActionResult ViewGallery()
+        public ActionResult ViewGallery(int? page)
         {
             if (!this.AuthenticateUser())
             {
@@ -400,7 +402,7 @@ namespace InlaksAlumniWebsite.Controllers
 
             using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
-                var user = db.EventImages.ToList();
+                var user = db.EventImages.ToList().ToPagedList(page ?? 1, 4);
                 if (user == null)
                 {
                     return RedirectToAction("UploadPhoto");

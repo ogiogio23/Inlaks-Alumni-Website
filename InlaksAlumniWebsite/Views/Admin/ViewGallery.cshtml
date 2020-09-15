@@ -1,4 +1,6 @@
-﻿@model IEnumerable<InlaksAlumniWebsite.Models.EventImage>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<InlaksAlumniWebsite.Models.EventImage>
 
 @{
     ViewBag.Title = "ViewGallery";
@@ -22,11 +24,11 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name )
+                                    @Html.DisplayNameFor(model => model.First().Name )
                                 </th>
 
                                 <th>
-                                    @Html.DisplayNameFor(model => model.ImagesUrl)
+                                    @Html.DisplayNameFor(model => model.First().ImagesUrl)
                                 </th>
 
 
@@ -48,33 +50,7 @@
                             }
 
                    </table>
-
-
-                <!--<div class="error-page">
-
-
-            <div class="service_1-right col-md-3">
-                <img src="~/Content/admin/images/INLAKS-1.jpg">
-
-            </div>
-            <div class="service_1-right">
-                <img src="~/Content/admin/images/INLAKS-2.jpg">
-
-            </div>
-        </div>
-
-        <div class="error-page">
-
-
-            <div class="service_1-right col-md-3">
-                <img src="~/Content/admin/images/INLAKS-1.jpg">
-
-            </div>
-            <div class="service_1-right">
-                <img src="~/Content/admin/images/INLAKS-2.jpg">
-
-            </div>
-        </div>-->
+                @Html.PagedListPager(Model, page => Url.Action("ViewGallery", new { page }))
                 </div>
             </div>
         </div>

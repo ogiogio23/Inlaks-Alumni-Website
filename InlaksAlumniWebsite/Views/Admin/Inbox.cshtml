@@ -1,4 +1,7 @@
-﻿@model IEnumerable<InlaksAlumniWebsite.Models.Feedback>
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<InlaksAlumniWebsite.Models.Feedback>
 
 @{
     ViewBag.Title = "Inbox";
@@ -81,6 +84,9 @@
             </div>
 
 
+        </div>
+        <div style="margin-left: 15px">
+            @Html.PagedListPager(Model, page => Url.Action("Inbox", new { page }))
         </div>
     </div>
     <div class="clearfix"> </div>
