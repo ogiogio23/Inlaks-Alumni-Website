@@ -1,4 +1,7 @@
-﻿@model IEnumerable<InlaksAlumniWebsite.Models.Alumni >
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<InlaksAlumniWebsite.Models.Alumni >
 @{
     ViewBag.Title = "UpdateAlumni";
     Layout = "~/Views/Shared/_InlaksAdminLayout.cshtml";
@@ -69,6 +72,7 @@
                         }
                     </tbody>
                 </table>
+                @Html.PagedListPager(Model, page => Url.Action("UpdateAlumni", new { page }))
             </div>
         </div>
     </div>

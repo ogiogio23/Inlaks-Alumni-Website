@@ -1,4 +1,7 @@
-﻿@model IEnumerable<InlaksAlumniWebsite.Models.Event>
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<InlaksAlumniWebsite.Models.Event>
 
 @{
     ViewBag.Title = "ManageEvent";
@@ -54,6 +57,7 @@
                         }
                     </tbody>
                 </table>
+                @Html.PagedListPager(Model, page => Url.Action("ManageEvent", new { page }))
             </div>
         </div>
     </div>

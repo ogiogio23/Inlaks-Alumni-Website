@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace InlaksAlumniWebsite.Controllers
 {
@@ -61,11 +63,11 @@ namespace InlaksAlumniWebsite.Controllers
             }
         }
 
-        public ActionResult Gallery()
+        public ActionResult Gallery(int? page)
         {
             using (InlaksAlumniContext db = new InlaksAlumniContext())
             {
-                var user = db.EventImages.ToList();
+                var user = db.EventImages.ToList().ToPagedList(page ?? 1, 6);
                 if (user == null)
                 {
                     return RedirectToAction("Gallery");
@@ -118,10 +120,10 @@ namespace InlaksAlumniWebsite.Controllers
 
         public ActionResult Register()
         {
-            if (!this.AuthenticateUser())
+            /*if (!this.AuthenticateUser())
             {
-                return RedirectToAction("Login");
-            }
+                return RedirectToAction("Register");
+            }*/
 
             return View();
         }
